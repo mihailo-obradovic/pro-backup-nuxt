@@ -1,5 +1,5 @@
 <template>
-  <div style="padding: 16px; height: calc(100% - 32px)">
+  <div class="p-4 h-full">
     <slot />
   </div>
 </template>
