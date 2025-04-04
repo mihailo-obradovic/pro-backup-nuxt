@@ -20,7 +20,8 @@ export default defineNuxtConfig({
     '@nuxt/eslint',
     '@nuxt/icon',
     '@nuxt/test-utils',
-    '@nuxtjs/tailwindcss'
+    '@nuxtjs/tailwindcss',
+    'shadcn-nuxt'
   ],
 
   shadcn: {
