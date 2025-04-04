@@ -39,6 +39,9 @@ importers:
       sass-loader:
         specifier: ^16.0.5
         version: 16.0.5(sass@1.86.3)
+      typescript:
+        specifier: ^5.8.2
+        version: 5.8.2
 
 packages:
 
