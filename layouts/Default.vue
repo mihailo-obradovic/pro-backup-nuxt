@@ -23,7 +23,7 @@
         </s-breadcrumb>
       </header>
 
-      <main class="h-screen w-screen flex flex-col p-4">
+      <main class="h-full w-full flex flex-col p-4">
         <slot />
       </main>
     </s-sidebar-inset>
