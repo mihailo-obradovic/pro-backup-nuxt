@@ -16,7 +16,12 @@ export default defineNuxtConfig({
     }
   },
 
-  modules: ['@nuxt/eslint', '@nuxt/test-utils', '@nuxt/icon'],
+  modules: [
+    '@nuxt/eslint',
+    '@nuxt/icon',
+    '@nuxt/test-utils',
+    '@nuxtjs/tailwindcss'
+  ],
 
   css: ['@/assets/styles/main.scss'],
 
