@@ -1,3 +1,37 @@
+<template>
+  <Sidebar v-bind="props">
+    <SidebarContent>
+      <SidebarGroup>
+        <SidebarGroupLabel>Changes</SidebarGroupLabel>
+        <SidebarGroupContent>
+          <SidebarMenu>
+            <SidebarMenuItem v-for="(item, index) in data.changes" :key="index">
+              <SidebarMenuButton>
+                <File />
+                {{ item.file }}
+              </SidebarMenuButton>
+              <SidebarMenuBadge>{{ item.state }}</SidebarMenuBadge>
+            </SidebarMenuItem>
+          </SidebarMenu>
+        </SidebarGroupContent>
+      </SidebarGroup>
+      <SidebarGroup>
+        <SidebarGroupLabel>All Files</SidebarGroupLabel>
+        <SidebarGroupContent>
+          <SidebarMenu>
+            <Tree
+              v-for="(item, index) in data.tree"
+              :key="index"
+              :item="item"
+            />
+          </SidebarMenu>
+        </SidebarGroupContent>
+      </SidebarGroup>
+    </SidebarContent>
+    <SidebarRail />
+  </Sidebar>
+</template>
+
 <script setup lang="ts">
 import Tree from './Tree.vue';
 import {
@@ -34,24 +68,14 @@ const data = {
     }
   ],
   tree: [
+    ['Workspace 1', ['Team A', 'Project A', 'Project B', 'Project C']],
     [
-      'app',
-      [
-        'api',
-        ['hello', ['route.ts']],
-        'page.tsx',
-        'layout.tsx',
-        ['blog', ['page.tsx']]
-      ]
-    ],
-    [
-      'components',
+      'Workspace 2',
       ['ui', 'button.tsx', 'card.tsx'],
       'header.tsx',
       'footer.tsx'
     ],
-    ['lib', ['util.ts']],
-    ['public', 'favicon.ico', 'vercel.svg'],
+    ['Workspace 3', ['util.ts']],
     '.eslintrc.json',
     '.gitignore',
     'next.config.js',
@@ -61,37 +85,3 @@ const data = {
   ]
 };
 </script>
-
-<template>
-  <Sidebar v-bind="props">
-    <SidebarContent>
-      <SidebarGroup>
-        <SidebarGroupLabel>Changes</SidebarGroupLabel>
-        <SidebarGroupContent>
-          <SidebarMenu>
-            <SidebarMenuItem v-for="(item, index) in data.changes" :key="index">
-              <SidebarMenuButton>
-                <File />
-                {{ item.file }}
-              </SidebarMenuButton>
-              <SidebarMenuBadge>{{ item.state }}</SidebarMenuBadge>
-            </SidebarMenuItem>
-          </SidebarMenu>
-        </SidebarGroupContent>
-      </SidebarGroup>
-      <SidebarGroup>
-        <SidebarGroupLabel>Files</SidebarGroupLabel>
-        <SidebarGroupContent>
-          <SidebarMenu>
-            <Tree
-              v-for="(item, index) in data.tree"
-              :key="index"
-              :item="item"
-            />
-          </SidebarMenu>
-        </SidebarGroupContent>
-      </SidebarGroup>
-    </SidebarContent>
-    <SidebarRail />
-  </Sidebar>
-</template>
