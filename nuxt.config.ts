@@ -24,6 +24,11 @@ export default defineNuxtConfig({
     'shadcn-nuxt'
   ],
 
+  shadcn: {
+    prefix: 'S',
+    componentDir: './components/ui'
+  },
+
   css: ['@/assets/styles/main.scss'],
 
   components: {
