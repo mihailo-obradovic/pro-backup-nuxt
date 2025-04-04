@@ -1,6 +1,3 @@
-<script lang="ts">
-</script>
-
 <script setup lang="ts">
 import AppSidebar from '@/registry/new-york/blocks/Sidebar11/components/AppSidebar.vue';
 import {
@@ -17,6 +14,9 @@ import {
   SidebarProvider,
   SidebarTrigger
 } from '@/components/ui/sidebar';
+</script>
+
+<script lang="ts">
 export const description = 'A sidebar with a collapsible file tree.';
 export const iframeHeight = '800px';
 </script>
