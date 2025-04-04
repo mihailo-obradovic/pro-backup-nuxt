@@ -13,10 +13,21 @@
         </PContainer>
       </s-tabs-trigger>
     </s-tabs-list>
+
+    <s-tabs-content value="tasks">
+      <div class="container py-10 mx-auto">
+        <SampleTable :columns="columns" :data="data" />
+      </div>
+    </s-tabs-content>
   </s-tabs>
 </template>
 
-<script setup>
+<script setup lang="ts">
+import { onMounted, ref } from 'vue';
+import { columns } from '@/components/payments/columns';
+import type { Payment } from '../components/payments/columns';
+import SampleTable from '../components/payments/SampleTable.vue';
+
 const tabs = [
   {
     label: 'Tasks',
@@ -51,4 +62,23 @@ const tabs = [
 ];
 
 const activeTab = ref('tasks');
+
+const data = ref<Payment[]>([]);
+
+async function getData(): Promise<Payment[]> {
+  // Fetch data from your API here.
+  return [
+    {
+      id: '728ed52f',
+      amount: 100,
+      status: 'pending',
+      email: 'm@example.com'
+    }
+    // ...
+  ];
+}
+
+onMounted(async () => {
+  data.value = await getData();
+});
 </script>
