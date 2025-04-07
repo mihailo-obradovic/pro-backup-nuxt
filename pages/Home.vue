@@ -15,7 +15,7 @@
           </v-tabs>
         </v-col>
 
-        <v-col cols="6" md="4" lg="3" class="ps-1">
+        <v-col cols="6" md="4" lg="3" class="ps-1 d-flex ga-2">
           <v-text-field
             v-model="search"
             prepend-inner-icon="mdi-magnify"
@@ -25,6 +25,13 @@
             density="compact"
             variant="outlined"
           />
+
+          <v-btn variant="outlined" height="40">
+            <div class="d-flex ga-2">
+              Filter
+              <v-icon>mdi-filter-outline</v-icon>
+            </div>
+          </v-btn>
         </v-col>
       </v-row>
     </v-card>
