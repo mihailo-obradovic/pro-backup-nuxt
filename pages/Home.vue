@@ -54,6 +54,18 @@
         <template #item.size="{ item }">
           {{ formatFileSize(item.size) }}
         </template>
+
+        <!-- Custom formatting for category with chips -->
+        <template #item.category="{ item }">
+          <v-chip
+            :color="getCategoryColor(item.category)"
+            size="small"
+            class="text-capitalize"
+            variant="outlined"
+          >
+            {{ item.category }}
+          </v-chip>
+        </template>
       </v-data-table>
     </v-card>
   </v-container>
@@ -88,6 +100,22 @@ function formatFileSize(bytes) {
   else if (bytes < 1048576) return (bytes / 1024).toFixed(2) + ' KB';
   else if (bytes < 1073741824) return (bytes / 1048576).toFixed(2) + ' MB';
   else return (bytes / 1073741824).toFixed(2) + ' GB';
+}
+
+// Category color mapping
+const categoryColors = reactive({
+  Document: 'blue',
+  Image: 'purple',
+  Video: 'red',
+  Spreadsheet: 'green',
+  Presentation: 'amber',
+  Archive: 'grey',
+  Other: 'teal'
+});
+
+// Function to get color for a category
+function getCategoryColor(category) {
+  return categoryColors[category];
 }
 
 // Generate 100 dummy records
