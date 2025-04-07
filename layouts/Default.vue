@@ -1,9 +1,64 @@
 <template>
-  <div>
-    <slot />
-  </div>
+  <v-app>
+    <!-- Toolbar at the top of the screen -->
+    <v-app-bar color="primary" height="48">
+      <!-- Title of the application with adjusted margin and font size -->
+      <v-app-bar-title class="text-h6 ms-3">
+        <v-icon icon="mdi-apps" @click="drawer = !drawer" />
+
+        <span class="ms-1">My Application</span>
+      </v-app-bar-title>
+
+      <!-- Spacer to push the following elements to the right -->
+      <v-spacer />
+
+      <!-- Menu icons on the right side of the toolbar -->
+      <v-btn icon="mdi-home" @click="navigateTo('/')" />
+
+      <v-btn icon="mdi-cube-outline" @click="navigateTo('/products')" />
+
+      <v-btn icon="mdi-email" @click="navigateTo('/contact')" />
+    </v-app-bar>
+
+    <!-- Navigation drawer for menu actions -->
+    <v-navigation-drawer v-model="drawer">
+      <v-list>
+        <!-- Menu items in the drawer with icons -->
+        <v-list-item
+          title="Home"
+          prepend-icon="mdi-home"
+          @click="navigateTo('/')"
+        />
+
+        <v-list-item
+          title="Products"
+          prepend-icon="mdi-cube-outline"
+          @click="navigateTo('/products')"
+        />
+
+        <v-list-item
+          title="Contact"
+          prepend-icon="mdi-email"
+          @click="navigateTo('/contact')"
+        />
+      </v-list>
+    </v-navigation-drawer>
+
+    <!-- Main content of the application -->
+    <v-main>
+      <NuxtPage />
+    </v-main>
+
+    <!-- Smaller footer at the bottom of the screen -->
+    <v-footer app color="secondary" height="30">
+      <v-container class="text-caption text-center">
+        © {{ new Date().getFullYear() }} My Application - All Rights Reserved
+      </v-container>
+    </v-footer>
+  </v-app>
 </template>
 
-<script lang="ts" setup>
-//
+<script setup>
+// Drawer state to open/close the navigation drawer
+const drawer = shallowRef(false);
 </script>
