@@ -77,10 +77,10 @@ const activeTab = ref('tasks');
 const search = ref('');
 
 const tabs = [
-  { name: 'tasks', icon: 'mdi-check-circle' },
-  { name: 'projects', icon: 'mdi-folder' },
+  { name: 'tasks', icon: 'mdi-check-circle-outline' },
+  { name: 'projects', icon: 'mdi-folder-outline' },
   { name: 'attachments', icon: 'mdi-paperclip' },
-  { name: 'comments', icon: 'mdi-comment' },
+  { name: 'comments', icon: 'mdi-comment-outline' },
   { name: 'customFields', icon: 'mdi-form-textbox' },
   { name: 'goals', icon: 'mdi-target' }
 ];
