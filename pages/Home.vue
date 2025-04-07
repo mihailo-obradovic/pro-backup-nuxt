@@ -2,7 +2,10 @@
   <v-container class="fill-height d-flex flex-column ga-4" fluid>
     <v-card class="flex-grow-0 w-100">
       <v-row no-gutters align="center" class="px-1">
-        <v-col cols="6" md="8" lg="9">
+        <v-col cols="6" md="8" lg="9" class="tab-container pe-1">
+          <!-- Left gradient fade -->
+          <!-- <div class="tab-fade tab-fade-left" /> -->
+
           <v-tabs
             v-model="activeTab"
             bg-color="background"
@@ -13,9 +16,12 @@
               {{ tab.name.charAt(0).toUpperCase() + tab.name.slice(1) }}
             </v-tab>
           </v-tabs>
+
+          <!-- Right gradient fade -->
+          <!-- <div class="tab-fade tab-fade-right" /> -->
         </v-col>
 
-        <v-col cols="6" md="4" lg="3">
+        <v-col cols="6" md="4" lg="3" class="ps-1">
           <v-text-field
             v-model="search"
             prepend-inner-icon="mdi-magnify"
@@ -142,6 +148,40 @@ const records = Array.from({ length: 100 }, (_, i) => {
 </script>
 
 <style scoped>
+/* .tab-container {
+  position: relative;
+  overflow: hidden;
+}
+
+.tab-fade {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 64px;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.tab-fade-left {
+  left: 0;
+  background: linear-gradient(
+    to right,
+    rgb(var(--v-theme-foreground)) 20%,
+    transparent 100%
+  );
+  opacity: 0.2;
+}
+
+.tab-fade-right {
+  right: 0;
+  background: linear-gradient(
+    to left,
+    rgb(var(--v-theme-foreground)) 20%,
+    transparent 100%
+  );
+  opacity: 0.2;
+} */
+
 .data-table-fix {
   height: calc(
     100vh - 78px - 30px - 48px - 20px - 48px
