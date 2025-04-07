@@ -41,6 +41,25 @@
         </TableBody>
       </Table>
     </div>
+
+    <div class="flex items-center justify-end py-4 space-x-2">
+      <s-button
+        variant="outline"
+        size="sm"
+        :disabled="!table.getCanPreviousPage()"
+        @click="table.previousPage()"
+      >
+        Previous
+      </s-button>
+      <s-button
+        variant="outline"
+        size="sm"
+        :disabled="!table.getCanNextPage()"
+        @click="table.nextPage()"
+      >
+        Next
+      </s-button>
+    </div>
   </div>
 </template>
 
@@ -55,7 +74,12 @@ import {
   TableRow
 } from '@/components/ui/table';
 
-import { FlexRender, getCoreRowModel, useVueTable } from '@tanstack/vue-table';
+import {
+  FlexRender,
+  getCoreRowModel,
+  useVueTable,
+  getPaginationRowModel
+} from '@tanstack/vue-table';
 
 const props = defineProps<{
   columns: ColumnDef<TData, TValue>[];
@@ -69,7 +93,8 @@ const table = useVueTable({
   get columns() {
     return props.columns;
   },
-  getCoreRowModel: getCoreRowModel()
+  getCoreRowModel: getCoreRowModel(),
+  getPaginationRowModel: getPaginationRowModel()
 });
 </script>
 
