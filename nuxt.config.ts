@@ -29,7 +29,13 @@ export default defineNuxtConfig({
     plugins: [vuetify({ autoImport: true })]
   },
 
-  modules: ['@nuxt/eslint', '@nuxt/test-utils', '@nuxt/icon', '@nuxt/fonts'],
+  modules: [
+    '@nuxt/eslint',
+    '@nuxt/test-utils',
+    '@nuxt/icon',
+    '@nuxt/fonts',
+    '@vueuse/nuxt'
+  ],
 
   css: ['@/assets/styles/main.scss'],
 
