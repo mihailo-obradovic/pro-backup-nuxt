@@ -23,8 +23,7 @@
 </template>
 
 <script setup lang="ts">
-import { onMounted, ref } from 'vue';
-import { columns } from '@/components/payments/columns';
+import { columns, paymentData } from '@/components/payments/columns';
 import type { Payment } from '../components/payments/columns';
 import SampleTable from '../components/payments/SampleTable.vue';
 
@@ -63,22 +62,5 @@ const tabs = [
 
 const activeTab = ref('tasks');
 
-const data = ref<Payment[]>([]);
-
-async function getData(): Promise<Payment[]> {
-  // Fetch data from your API here.
-  return [
-    {
-      id: '728ed52f',
-      amount: 100,
-      status: 'pending',
-      email: 'm@example.com'
-    }
-    // ...
-  ];
-}
-
-onMounted(async () => {
-  data.value = await getData();
-});
+const data = ref<Payment[]>(paymentData);
 </script>

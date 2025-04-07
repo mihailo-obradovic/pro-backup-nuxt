@@ -40,3 +40,31 @@ export interface Payment {
   status: 'pending' | 'processing' | 'success' | 'failed';
   email: string;
 }
+
+export const paymentData: Payment[] = Array.from({ length: 100 }, (_, i) => {
+  const id = Math.random().toString(36).substring(2, 10);
+  const amount = Math.floor(Math.random() * 1000) + 10;
+  const statuses: Payment['status'][] = [
+    'pending',
+    'processing',
+    'success',
+    'failed'
+  ];
+  const status = statuses[Math.floor(Math.random() * statuses.length)];
+  const domains = [
+    'example.com',
+    'gmail.com',
+    'outlook.com',
+    'company.org',
+    'domain.net'
+  ];
+  const domain = domains[Math.floor(Math.random() * domains.length)];
+  const username = `user${i + 1}`;
+
+  return {
+    id,
+    amount,
+    status,
+    email: `${username}@${domain}`
+  };
+});
