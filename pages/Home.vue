@@ -86,13 +86,44 @@ const tabs = [
 ];
 
 const headers = [
-  { title: '', key: 'data-table-select', fixed: true },
-  { title: 'Created At', key: 'created_at', fixed: true },
-  { title: 'URL', key: 'url' },
-  { title: 'Category', key: 'category' },
-  { title: 'Size', key: 'size' },
-  { title: 'Supplier', key: 'supplier' },
-  { title: 'Data Point', key: 'dataPoint' }
+  {
+    title: '',
+    key: 'data-table-select',
+    fixed: true,
+    width: '5%'
+  },
+  {
+    title: 'Created At',
+    key: 'created_at',
+    fixed: true,
+    width: '15%'
+  },
+  {
+    title: 'URL',
+    key: 'url',
+    width: '35%'
+  },
+  {
+    title: 'Category',
+    key: 'category',
+    width: '10%'
+  },
+  {
+    title: 'Size',
+    key: 'size',
+    width: '10%'
+  },
+  {
+    title: 'Supplier',
+    key: 'supplier',
+    width: '15%'
+  },
+  {
+    title: 'Data Point',
+    key: 'dataPoint',
+    width: '10%',
+    align: 'end'
+  }
 ];
 
 function formatFileSize(bytes) {
@@ -206,5 +237,21 @@ const records = Array.from({ length: 100 }, (_, i) => {
   height: calc(
     100vh - 78px - 30px - 48px - 20px - 48px
   ) !important; /* Subtracting tab height, footer height, app bar height, and search container */
+}
+
+:deep(.v-data-table) {
+  table-layout: fixed;
+}
+
+:deep(.v-data-table__td),
+:deep(.v-data-table__th) {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* Optional: Add horizontal scrolling for the table if needed */
+.v-card.flex-grow-1 {
+  overflow-x: auto;
 }
 </style>
