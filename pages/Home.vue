@@ -1,5 +1,5 @@
 <template>
-  <v-container class="fill-height d-flex flex-column">
+  <v-container class="fill-height d-flex flex-column ga-4" fluid>
     <v-tabs
       v-model="activeTab"
       bg-color="background"
@@ -11,14 +11,13 @@
       </v-tab>
     </v-tabs>
 
-    <v-card class="flex-grow-1 d-flex flex-column overflow-hidden">
+    <v-card class="flex-grow-1 d-flex flex-column overflow-hidden w-100">
       <v-data-table
         :headers="headers"
         :items="records"
         :items-per-page="20"
-        class="flex-grow-1"
+        class="flex-grow-1 data-table-fix"
         fixed-header
-        height="100%"
       >
         <!-- Custom formatting for dates -->
         <template #item.created_at="{ item }">
@@ -121,3 +120,11 @@ const records = Array.from({ length: 100 }, (_, i) => {
   };
 });
 </script>
+
+<style scoped>
+.data-table-fix {
+  height: calc(
+    100vh - 78px - 30px - 48px - 20px
+  ) !important; /* Subtracting tab height, footer height, and app bar height */
+}
+</style>

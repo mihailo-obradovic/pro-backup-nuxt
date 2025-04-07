@@ -62,5 +62,5 @@
 
 <script setup>
 // Drawer state to open/close the navigation drawer
-const drawer = shallowRef(false);
+const drawer = shallowRef(true);
 </script>
