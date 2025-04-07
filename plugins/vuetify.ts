@@ -1,10 +1,11 @@
 import '@mdi/font/css/materialdesignicons.css';
+import type { VuetifyOptions } from 'vuetify';
 
 import 'vuetify/styles';
 import { createVuetify } from 'vuetify';
 
 const baseColors = {
-  primary: '#bd93f9',
+  primary: '#121637',
   secondary: '#44475a',
   accent: '#ff79c6',
   error: '#ff5555',
@@ -15,27 +16,27 @@ const baseColors = {
   highlight: '#f1fa8c'
 };
 
-const options = {
+const options: VuetifyOptions = {
   theme: {
     defaultTheme: 'light',
 
     themes: {
       light: {
-        isDark: false,
+        dark: false,
 
         colors: {
-          background: '#f8f8f2',
+          background: '#ffffff',
           foreground: '#282a36',
           ...baseColors
         }
       },
 
       dark: {
-        isDark: true,
+        dark: true,
 
         colors: {
           background: '#282a36',
-          foreground: '#f8f8f2',
+          foreground: '#ffffff',
           ...baseColors
         }
       }

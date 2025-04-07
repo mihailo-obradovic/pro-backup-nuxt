@@ -4,20 +4,22 @@
     <v-app-bar color="primary" height="48">
       <!-- Title of the application with adjusted margin and font size -->
       <v-app-bar-title class="text-h6 ms-3">
-        <v-icon icon="mdi-apps" @click="drawer = !drawer" />
+        <div class="d-flex align-center">
+          <v-icon icon="mdi-menu" @click="drawer = !drawer" />
 
-        <span class="ms-1">My Application</span>
+          <span class="ms-1">Pro Backup</span>
+        </div>
       </v-app-bar-title>
 
       <!-- Spacer to push the following elements to the right -->
       <v-spacer />
 
       <!-- Menu icons on the right side of the toolbar -->
-      <v-btn icon="mdi-home" @click="navigateTo('/')" />
+      <v-btn icon="mdi-home-outline" @click="navigateTo('/')" />
 
       <v-btn icon="mdi-cube-outline" @click="navigateTo('/products')" />
 
-      <v-btn icon="mdi-email" @click="navigateTo('/contact')" />
+      <v-btn icon="mdi-email-outline" @click="navigateTo('/contact')" />
     </v-app-bar>
 
     <!-- Navigation drawer for menu actions -->
@@ -26,7 +28,7 @@
         <!-- Menu items in the drawer with icons -->
         <v-list-item
           title="Home"
-          prepend-icon="mdi-home"
+          prepend-icon="mdi-home-outline"
           @click="navigateTo('/')"
         />
 
@@ -38,7 +40,7 @@
 
         <v-list-item
           title="Contact"
-          prepend-icon="mdi-email"
+          prepend-icon="mdi-email-outline"
           @click="navigateTo('/contact')"
         />
       </v-list>

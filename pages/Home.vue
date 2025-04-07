@@ -6,8 +6,7 @@
       align-tabs="start"
       class="flex-grow-0"
     >
-      <v-tab v-for="tab in tabs" :key="tab.name">
-        <v-icon>{{ tab.icon }}</v-icon>
+      <v-tab v-for="tab in tabs" :key="tab.name" :prepend-icon="tab.icon">
         {{ tab.name.charAt(0).toUpperCase() + tab.name.slice(1) }}
       </v-tab>
     </v-tabs>
