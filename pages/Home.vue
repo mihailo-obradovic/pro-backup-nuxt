@@ -1,21 +1,40 @@
 <template>
   <v-container class="fill-height d-flex flex-column ga-4" fluid>
-    <v-tabs
-      v-model="activeTab"
-      bg-color="background"
-      align-tabs="start"
-      class="flex-grow-0"
-    >
-      <v-tab v-for="tab in tabs" :key="tab.name" :prepend-icon="tab.icon">
-        {{ tab.name.charAt(0).toUpperCase() + tab.name.slice(1) }}
-      </v-tab>
-    </v-tabs>
+    <v-card class="flex-grow-0 w-100">
+      <v-row no-gutters align="center" class="px-1">
+        <v-col cols="6" md="8" lg="9">
+          <v-tabs
+            v-model="activeTab"
+            bg-color="background"
+            align-tabs="start"
+            show-arrows
+          >
+            <v-tab v-for="tab in tabs" :key="tab.name" :prepend-icon="tab.icon">
+              {{ tab.name.charAt(0).toUpperCase() + tab.name.slice(1) }}
+            </v-tab>
+          </v-tabs>
+        </v-col>
+
+        <v-col cols="6" md="4" lg="3">
+          <v-text-field
+            v-model="search"
+            prepend-inner-icon="mdi-magnify"
+            label="Search"
+            single-line
+            hide-details
+            density="compact"
+            variant="outlined"
+          />
+        </v-col>
+      </v-row>
+    </v-card>
 
     <v-card class="flex-grow-1 d-flex flex-column overflow-hidden w-100">
       <v-data-table
         :headers="headers"
         :items="records"
         :items-per-page="20"
+        :search="search"
         class="flex-grow-1 data-table-fix"
         fixed-header
       >
@@ -35,6 +54,7 @@
 
 <script setup>
 const activeTab = ref('tasks');
+const search = ref('');
 
 const tabs = [
   { name: 'tasks', icon: 'mdi-check-circle' },
@@ -124,7 +144,7 @@ const records = Array.from({ length: 100 }, (_, i) => {
 <style scoped>
 .data-table-fix {
   height: calc(
-    100vh - 78px - 30px - 48px - 20px
-  ) !important; /* Subtracting tab height, footer height, and app bar height */
+    100vh - 78px - 30px - 48px - 20px - 48px
+  ) !important; /* Subtracting tab height, footer height, app bar height, and search container */
 }
 </style>
