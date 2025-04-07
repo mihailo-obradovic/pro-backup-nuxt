@@ -23,9 +23,81 @@
     </v-app-bar>
 
     <!-- Navigation drawer for menu actions -->
-    <v-navigation-drawer v-model="drawer">
-      <v-list>
-        <!-- Menu items in the drawer with icons -->
+    <v-navigation-drawer v-model="drawer" width="300">
+      <v-list density="compact">
+        <v-list-item title="All Backups" prepend-icon="mdi-database-outline" />
+
+        <v-list-group value="workspace1">
+          <template #activator="{ props }">
+            <v-list-item
+              v-bind="props"
+              title="Workspace 1"
+              prepend-icon="mdi-folder-outline"
+            />
+          </template>
+        </v-list-group>
+
+        <v-list-group value="workspace2">
+          <template #activator="{ props }">
+            <v-list-item
+              v-bind="props"
+              title="Workspace 2"
+              prepend-icon="mdi-folder-outline"
+            />
+          </template>
+
+          <v-list-group value="teamA">
+            <template #activator="{ props }">
+              <v-list-item
+                v-bind="props"
+                title="Team A"
+                prepend-icon="mdi-account-group-outline"
+              />
+            </template>
+
+            <v-list-item
+              title="Project 1"
+              prepend-icon="mdi-file-document-outline"
+              class="pl-4"
+            />
+
+            <v-list-item
+              title="Project 2"
+              prepend-icon="mdi-file-document-outline"
+              class="pl-4"
+            />
+          </v-list-group>
+
+          <v-list-group value="teamB">
+            <template #activator="{ props }">
+              <v-list-item
+                v-bind="props"
+                title="Team B"
+                prepend-icon="mdi-account-group-outline"
+              />
+            </template>
+
+            <v-list-item
+              title="Project X"
+              prepend-icon="mdi-file-document-outline"
+              class="pl-4"
+            />
+          </v-list-group>
+        </v-list-group>
+
+        <v-list-group value="workspace3">
+          <template #activator="{ props }">
+            <v-list-item
+              v-bind="props"
+              title="Workspace 3"
+              prepend-icon="mdi-folder-outline"
+            />
+          </template>
+        </v-list-group>
+
+        <v-divider class="my-3" />
+
+        <!-- Original menu items -->
         <v-list-item
           title="Home"
           prepend-icon="mdi-home-outline"
