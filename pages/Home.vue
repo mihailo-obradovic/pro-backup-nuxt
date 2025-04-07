@@ -44,6 +44,7 @@
         class="flex-grow-1 data-table-fix"
         fixed-header
         show-select
+        item-value="id"
       >
         <!-- Custom formatting for dates -->
         <template #item.created_at="{ item }">
@@ -86,7 +87,8 @@ const tabs = [
 
 // Table headers
 const headers = [
-  { title: 'Created At', key: 'created_at' },
+  { title: '', key: 'data-table-select', fixed: true }, // Add this line for the select column
+  { title: 'Created At', key: 'created_at', fixed: true },
   { title: 'URL', key: 'url' },
   { title: 'Category', key: 'category' },
   { title: 'Size', key: 'size' },
