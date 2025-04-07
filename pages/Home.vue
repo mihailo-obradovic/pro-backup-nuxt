@@ -3,9 +3,6 @@
     <v-card class="flex-grow-0 w-100">
       <v-row no-gutters align="center" class="px-1">
         <v-col cols="6" md="8" lg="9" class="tab-container pe-1">
-          <!-- Left gradient fade -->
-          <!-- <div class="tab-fade tab-fade-left" /> -->
-
           <v-tabs
             v-model="activeTab"
             bg-color="background"
@@ -16,9 +13,6 @@
               {{ tab.name.charAt(0).toUpperCase() + tab.name.slice(1) }}
             </v-tab>
           </v-tabs>
-
-          <!-- Right gradient fade -->
-          <!-- <div class="tab-fade tab-fade-right" /> -->
         </v-col>
 
         <v-col cols="6" md="4" lg="3" class="ps-1">
@@ -35,40 +29,142 @@
       </v-row>
     </v-card>
 
-    <v-card class="flex-grow-1 d-flex flex-column overflow-hidden w-100">
-      <v-data-table
-        :headers="headers"
-        :items="records"
-        :items-per-page="20"
-        :search="search"
-        class="flex-grow-1 data-table-fix"
-        fixed-header
-        show-select
-        item-value="id"
-      >
-        <!-- Custom formatting for dates -->
-        <template #item.created_at="{ item }">
-          {{ new Date(item.created_at).toLocaleString() }}
-        </template>
+    <div class="d-flex flex-grow-1 w-100 ga-4">
+      <!-- Sidebar -->
+      <v-card class="sidebar-card" width="300">
+        <v-list density="compact">
+          <v-list-item
+            title="All Backups"
+            prepend-icon="mdi-database-outline"
+          />
 
-        <!-- Custom formatting for size -->
-        <template #item.size="{ item }">
-          {{ formatFileSize(item.size) }}
-        </template>
+          <v-list-group value="workspace1">
+            <template #activator="{ props }">
+              <v-list-item
+                v-bind="props"
+                title="Workspace 1"
+                prepend-icon="mdi-folder-outline"
+              />
+            </template>
+          </v-list-group>
 
-        <!-- Custom formatting for category with chips -->
-        <template #item.category="{ item }">
-          <v-chip
-            :color="getCategoryColor(item.category)"
-            size="small"
-            class="text-capitalize"
-            variant="outlined"
-          >
-            {{ item.category }}
-          </v-chip>
-        </template>
-      </v-data-table>
-    </v-card>
+          <v-list-group value="workspace2">
+            <template #activator="{ props }">
+              <v-list-item
+                v-bind="props"
+                title="Workspace 2"
+                prepend-icon="mdi-folder-outline"
+              />
+            </template>
+
+            <v-list-group value="teamA">
+              <template #activator="{ props }">
+                <v-list-item
+                  v-bind="props"
+                  title="Team A"
+                  prepend-icon="mdi-account-group-outline"
+                />
+              </template>
+
+              <v-list-item
+                title="Project 1"
+                prepend-icon="mdi-file-document-outline"
+                class="pl-4"
+              />
+
+              <v-list-item
+                title="Project 2"
+                prepend-icon="mdi-file-document-outline"
+                class="pl-4"
+              />
+            </v-list-group>
+
+            <v-list-group value="teamB">
+              <template #activator="{ props }">
+                <v-list-item
+                  v-bind="props"
+                  title="Team B"
+                  prepend-icon="mdi-account-group-outline"
+                />
+              </template>
+
+              <v-list-item
+                title="Project X"
+                prepend-icon="mdi-file-document-outline"
+                class="pl-4"
+              />
+            </v-list-group>
+          </v-list-group>
+
+          <v-list-group value="workspace3">
+            <template #activator="{ props }">
+              <v-list-item
+                v-bind="props"
+                title="Workspace 3"
+                prepend-icon="mdi-folder-outline"
+              />
+            </template>
+          </v-list-group>
+
+          <v-divider class="my-3" />
+
+          <!-- Original menu items -->
+          <v-list-item
+            title="Home"
+            prepend-icon="mdi-home-outline"
+            @click="navigateTo('/')"
+          />
+
+          <v-list-item
+            title="Products"
+            prepend-icon="mdi-cube-outline"
+            @click="navigateTo('/products')"
+          />
+
+          <v-list-item
+            title="Contact"
+            prepend-icon="mdi-email-outline"
+            @click="navigateTo('/contact')"
+          />
+        </v-list>
+      </v-card>
+
+      <!-- Content -->
+      <v-card class="flex-grow-1 d-flex flex-column overflow-hidden">
+        <v-data-table
+          :headers="headers"
+          :items="records"
+          :items-per-page="20"
+          :search="search"
+          class="flex-grow-1 data-table-fix"
+          fixed-header
+          show-select
+          item-value="id"
+        >
+          <!-- Custom formatting for dates -->
+          <template #item.created_at="{ item }">
+            {{ new Date(item.created_at).toLocaleString() }}
+          </template>
+
+          <!-- Custom formatting for size -->
+          <template #item.size="{ item }">
+            {{ formatFileSize(item.size) }}
+          </template>
+
+          <!-- Custom formatting for category with chips -->
+          <template #item.category="{ item }">
+            <v-chip
+              :color="getCategoryColor(item.category)"
+              size="small"
+              class="text-capitalize"
+              variant="outlined"
+            >
+              {{ item.category }}
+            </v-chip>
+          </template>
+        </v-data-table>
+      </v-card>
+    </div>
   </v-container>
 </template>
 
@@ -199,40 +295,6 @@ const records = Array.from({ length: 100 }, (_, i) => {
 </script>
 
 <style scoped>
-/* .tab-container {
-  position: relative;
-  overflow: hidden;
-}
-
-.tab-fade {
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  width: 64px;
-  pointer-events: none;
-  z-index: 1;
-}
-
-.tab-fade-left {
-  left: 0;
-  background: linear-gradient(
-    to right,
-    rgb(var(--v-theme-foreground)) 20%,
-    transparent 100%
-  );
-  opacity: 0.2;
-}
-
-.tab-fade-right {
-  right: 0;
-  background: linear-gradient(
-    to left,
-    rgb(var(--v-theme-foreground)) 20%,
-    transparent 100%
-  );
-  opacity: 0.2;
-} */
-
 .data-table-fix {
   height: calc(
     100vh - 78px - 30px - 48px - 20px - 48px
