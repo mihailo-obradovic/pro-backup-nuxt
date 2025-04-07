@@ -85,9 +85,8 @@ const tabs = [
   { name: 'goals', icon: 'mdi-target' }
 ];
 
-// Table headers
 const headers = [
-  { title: '', key: 'data-table-select', fixed: true }, // Add this line for the select column
+  { title: '', key: 'data-table-select', fixed: true },
   { title: 'Created At', key: 'created_at', fixed: true },
   { title: 'URL', key: 'url' },
   { title: 'Category', key: 'category' },
@@ -96,7 +95,6 @@ const headers = [
   { title: 'Data Point', key: 'dataPoint' }
 ];
 
-// Function to format file size
 function formatFileSize(bytes) {
   if (bytes < 1024) return bytes + ' B';
   else if (bytes < 1048576) return (bytes / 1024).toFixed(2) + ' KB';
@@ -104,7 +102,6 @@ function formatFileSize(bytes) {
   else return (bytes / 1073741824).toFixed(2) + ' GB';
 }
 
-// Category color mapping
 const categoryColors = reactive({
   Document: 'blue',
   Image: 'purple',
@@ -115,18 +112,14 @@ const categoryColors = reactive({
   Other: 'teal'
 });
 
-// Function to get color for a category
 function getCategoryColor(category) {
   return categoryColors[category];
 }
 
-// Generate 100 dummy records
 const records = Array.from({ length: 100 }, (_, i) => {
-  // Random date within last year
   const randomDate = new Date();
   randomDate.setDate(randomDate.getDate() - Math.floor(Math.random() * 365));
 
-  // Random categories
   const categories = [
     'Document',
     'Image',
@@ -138,10 +131,8 @@ const records = Array.from({ length: 100 }, (_, i) => {
   ];
   const category = categories[Math.floor(Math.random() * categories.length)];
 
-  // Random size between 1KB and 500MB
   const size = Math.floor(Math.random() * 500 * 1024 * 1024) + 1024;
 
-  // Random suppliers
   const suppliers = [
     'Acme Corp',
     'Globex',
@@ -153,10 +144,8 @@ const records = Array.from({ length: 100 }, (_, i) => {
   ];
   const supplier = suppliers[Math.floor(Math.random() * suppliers.length)];
 
-  // Random data point (a numeric value)
   const dataPoint = Math.random() * 100;
 
-  // Random URL
   const urlTypes = [
     'https://drive.google.com/',
     'https://dropbox.com/',
