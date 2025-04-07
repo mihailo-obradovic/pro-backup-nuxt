@@ -1,6 +1,6 @@
 <template>
-  <s-tabs v-model="activeTab">
-    <s-tabs-list class="flex w-full">
+  <s-tabs v-model="activeTab" class="flex flex-col h-full">
+    <s-tabs-list class="flex w-full shrink-0">
       <s-tabs-trigger
         v-for="tab in tabs"
         :key="tab.value"
@@ -14,8 +14,8 @@
       </s-tabs-trigger>
     </s-tabs-list>
 
-    <s-tabs-content value="tasks">
-      <div class="container py-10 mx-auto">
+    <s-tabs-content value="tasks" class="flex-1 overflow-hidden">
+      <div class="h-full flex flex-col">
         <SampleTable :columns="columns" :data="data" />
       </div>
     </s-tabs-content>

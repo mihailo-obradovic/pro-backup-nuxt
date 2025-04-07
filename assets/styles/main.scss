@@ -8,11 +8,28 @@ body,
     height: 100%;
     width: 100%;
     margin: 0;
-    overflow-y: hidden !important;
 }
 
 body {
     font-family: Outfit, sans-serif;
+}
+
+.table-container {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.table-container .table {
+    width: 100%;
+}
+
+.table-header-sticky thead {
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    background-color: hsl(var(--background));
+    box-shadow: 0 1px 0 hsl(var(--border));
 }
 
 ::selection {

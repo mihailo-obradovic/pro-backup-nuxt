@@ -1,8 +1,8 @@
 <template>
-  <s-sidebar-provider>
+  <s-sidebar-provider class="h-full flex">
     <AppSidebar />
 
-    <s-sidebar-inset>
+    <s-sidebar-inset class="flex flex-col h-full overflow-hidden">
       <header class="flex h-16 shrink-0 items-center gap-2 border-b px-4">
         <s-sidebar-trigger class="-ml-1" />
         <s-separator orientation="vertical" class="mr-2 h-4" />
@@ -23,7 +23,7 @@
         </s-breadcrumb>
       </header>
 
-      <main class="h-full w-full flex flex-col p-4">
+      <main class="flex-1 overflow-hidden p-4">
         <slot />
       </main>
     </s-sidebar-inset>
