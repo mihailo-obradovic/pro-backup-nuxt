@@ -43,6 +43,7 @@
         :search="search"
         class="flex-grow-1 data-table-fix"
         fixed-header
+        show-select
       >
         <!-- Custom formatting for dates -->
         <template #item.created_at="{ item }">
