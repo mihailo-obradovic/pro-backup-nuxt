@@ -47,5 +47,11 @@ export default defineNuxtConfig({
         file: '@/pages/Home.vue'
       });
     }
+  },
+
+  routeRules: {
+    '/api/**': {
+      cors: true
+    }
   }
 });
