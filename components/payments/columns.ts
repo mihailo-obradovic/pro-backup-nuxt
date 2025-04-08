@@ -1,3 +1,4 @@
+import type { ColumnDef } from '@tanstack/vue-table';
 import { h } from 'vue';
 
 export const columns: ColumnDef<Payment>[] = [
@@ -23,7 +24,7 @@ export const columns: ColumnDef<Payment>[] = [
     accessorKey: 'status',
     header: 'Status',
     cell: ({ row }) => {
-      const status = row.getValue('status');
+      const status = row.getValue('status') as string;
       return h('div', { class: 'capitalize' }, status);
     }
   },
