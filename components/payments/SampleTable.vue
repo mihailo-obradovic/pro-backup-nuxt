@@ -1,5 +1,5 @@
 <template>
-  <div class="border rounded-md flex flex-col h-full">
+  <div class="border rounded-md flex flex-col max-h-full">
     <Table class="overflow-auto">
       <TableHeader class="sticky top-0 bg-background z-10">
         <TableRow
