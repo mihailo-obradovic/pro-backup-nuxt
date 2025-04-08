@@ -22,6 +22,7 @@ export default defineNuxtConfig({
     '@nuxt/icon',
     '@nuxt/test-utils',
     '@nuxtjs/tailwindcss',
+    '@vueuse/nuxt',
     'shadcn-nuxt'
   ],
 
