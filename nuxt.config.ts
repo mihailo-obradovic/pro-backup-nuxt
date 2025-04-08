@@ -24,7 +24,7 @@ export default defineNuxtConfig({
     '@nuxt/ui-pro'
   ],
 
-  css: ['@/assets/styles/main.scss'],
+  css: ['@/assets/styles/main.css'],
 
   components: {
     dirs: ['@/components/shared']
