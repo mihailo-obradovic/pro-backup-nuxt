@@ -18,10 +18,10 @@ export default defineNuxtConfig({
 
   modules: [
     '@nuxt/eslint',
-    '@nuxt/test-utils',
     '@nuxt/icon',
-    '@vueuse/nuxt',
-    '@nuxt/ui-pro'
+    '@nuxt/test-utils',
+    '@nuxt/ui-pro',
+    '@vueuse/nuxt'
   ],
 
   css: ['@/assets/styles/main.css'],
