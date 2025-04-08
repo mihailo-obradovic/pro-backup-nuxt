@@ -1,7 +1,9 @@
 <template>
   <div class="border rounded-md flex flex-col max-h-full">
     <Table class="overflow-auto">
-      <TableHeader class="sticky top-0 bg-background z-10">
+      <TableHeader
+        class="sticky top-0 bg-background z-10 after:absolute after:bottom-0 after:left-0 after:right-0 after:border-b"
+      >
         <TableRow
           v-for="headerGroup in table.getHeaderGroups()"
           :key="headerGroup.id"
@@ -40,7 +42,7 @@
       </TableBody>
     </Table>
 
-    <TablePagination :table="table" class="p-4" />
+    <TablePagination :table="table" class="p-4 border-t" />
   </div>
 </template>
 
