@@ -26,10 +26,6 @@ export default defineNuxtConfig({
 
   css: ['@/assets/styles/main.css'],
 
-  components: {
-    dirs: ['@/components/shared']
-  },
-
   imports: {
     dirs: ['services']
   },
