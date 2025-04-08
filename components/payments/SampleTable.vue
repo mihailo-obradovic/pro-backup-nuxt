@@ -1,6 +1,6 @@
 <template>
   <div class="border rounded-md flex flex-col max-h-full">
-    <Table class="overflow-auto">
+    <Table class="overflow-auto table-fixed">
       <TableHeader
         class="sticky top-0 bg-background z-10 after:absolute after:bottom-0 after:left-0 after:right-0 after:border-b"
       >
