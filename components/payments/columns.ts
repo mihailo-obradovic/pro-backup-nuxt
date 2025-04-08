@@ -1,6 +1,8 @@
 import type { ColumnDef } from '@tanstack/vue-table';
 import { h } from 'vue';
 
+import DropdownAction from './DataTableDropdown.vue';
+
 export const columns: ColumnDef<Payment>[] = [
   {
     accessorKey: 'id',
@@ -32,6 +34,15 @@ export const columns: ColumnDef<Payment>[] = [
     accessorKey: 'email',
     header: 'Email',
     cell: ({ row }) => h('div', {}, row.getValue('email'))
+  },
+  {
+    id: 'actions',
+    enableHiding: false,
+    cell: ({ row }) => {
+      const payment = row.original;
+
+      return h('div', { class: 'relative' }, h(DropdownAction, { payment }));
+    }
   }
 ];
 
