@@ -42,24 +42,7 @@
       </Table>
     </div>
 
-    <div class="flex items-center justify-end py-4 space-x-2">
-      <s-button
-        variant="outline"
-        size="sm"
-        :disabled="!table.getCanPreviousPage()"
-        @click="table.previousPage()"
-      >
-        Previous
-      </s-button>
-      <s-button
-        variant="outline"
-        size="sm"
-        :disabled="!table.getCanNextPage()"
-        @click="table.nextPage()"
-      >
-        Next
-      </s-button>
-    </div>
+    <TablePagination :table="table" class="p-4" />
   </div>
 </template>
 
@@ -80,6 +63,8 @@ import {
   useVueTable,
   getPaginationRowModel
 } from '@tanstack/vue-table';
+
+import TablePagination from './TablePagination.vue';
 
 const props = defineProps<{
   columns: ColumnDef<TData, TValue>[];
