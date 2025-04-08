@@ -1,46 +1,44 @@
 <template>
   <div class="border rounded-md flex flex-col h-full">
-    <div class="overflow-auto flex-1">
-      <Table class="relative">
-        <TableHeader class="sticky top-0 bg-background z-10">
+    <Table class="overflow-auto">
+      <TableHeader class="sticky top-0 bg-background z-10">
+        <TableRow
+          v-for="headerGroup in table.getHeaderGroups()"
+          :key="headerGroup.id"
+        >
+          <TableHead v-for="header in headerGroup.headers" :key="header.id">
+            <FlexRender
+              v-if="!header.isPlaceholder"
+              :render="header.column.columnDef.header"
+              :props="header.getContext()"
+            />
+          </TableHead>
+        </TableRow>
+      </TableHeader>
+      <TableBody>
+        <template v-if="table.getRowModel().rows?.length">
           <TableRow
-            v-for="headerGroup in table.getHeaderGroups()"
-            :key="headerGroup.id"
+            v-for="row in table.getRowModel().rows"
+            :key="row.id"
+            :data-state="row.getIsSelected() ? 'selected' : undefined"
           >
-            <TableHead v-for="header in headerGroup.headers" :key="header.id">
+            <TableCell v-for="cell in row.getVisibleCells()" :key="cell.id">
               <FlexRender
-                v-if="!header.isPlaceholder"
-                :render="header.column.columnDef.header"
-                :props="header.getContext()"
+                :render="cell.column.columnDef.cell"
+                :props="cell.getContext()"
               />
-            </TableHead>
+            </TableCell>
           </TableRow>
-        </TableHeader>
-        <TableBody>
-          <template v-if="table.getRowModel().rows?.length">
-            <TableRow
-              v-for="row in table.getRowModel().rows"
-              :key="row.id"
-              :data-state="row.getIsSelected() ? 'selected' : undefined"
-            >
-              <TableCell v-for="cell in row.getVisibleCells()" :key="cell.id">
-                <FlexRender
-                  :render="cell.column.columnDef.cell"
-                  :props="cell.getContext()"
-                />
-              </TableCell>
-            </TableRow>
-          </template>
-          <template v-else>
-            <TableRow>
-              <TableCell :colspan="columns.length" class="h-24 text-center">
-                No results.
-              </TableCell>
-            </TableRow>
-          </template>
-        </TableBody>
-      </Table>
-    </div>
+        </template>
+        <template v-else>
+          <TableRow>
+            <TableCell :colspan="columns.length" class="h-24 text-center">
+              No results.
+            </TableCell>
+          </TableRow>
+        </template>
+      </TableBody>
+    </Table>
 
     <TablePagination :table="table" class="p-4" />
   </div>
@@ -82,9 +80,3 @@ const table = useVueTable({
   getPaginationRowModel: getPaginationRowModel()
 });
 </script>
-
-<style scoped>
-.sticky {
-  position: sticky;
-}
-</style>
