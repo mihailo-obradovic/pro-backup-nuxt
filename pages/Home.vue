@@ -1,5 +1,10 @@
 <template>
-  <u-tabs :items="tabs" class="w-full" variant="link">
+  <u-tabs
+    :items="tabs"
+    class="h-full w-full"
+    variant="link"
+    :ui="{ content: 'h-full' }"
+  >
     <template #tasks>
       <TasksTab />
     </template>

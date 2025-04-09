@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="h-full w-full flex flex-col">
     <u-dashboard-navbar title="ProBackup">
       <template #leading>
         <u-dashboard-sidebar-collapse />
@@ -20,7 +20,7 @@
       </template>
     </u-dashboard-navbar>
 
-    <main class="p-4">
+    <main class="p-4 flex-1">
       <slot />
     </main>
   </div>

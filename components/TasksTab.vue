@@ -1,5 +1,5 @@
 <template>
-  <div class="flex p-4 gap-4">
+  <div class="flex p-4 gap-4 h-full">
     <UTree :items="items" />
 
     <SampleTable />
