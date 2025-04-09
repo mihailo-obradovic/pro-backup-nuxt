@@ -51,7 +51,7 @@
       :data="data"
       :columns="columns"
       sticky
-      class="max-h-full"
+      class="h-[580px]"
     >
       <template #expanded="{ row }">
         <pre>{{ row.original }}</pre>
