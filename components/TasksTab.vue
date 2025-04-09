@@ -1,11 +1,14 @@
 <template>
-  <div class="flex">
+  <div class="flex p-4 gap-4">
     <UTree :items="items" />
+
+    <SampleTable />
   </div>
 </template>
 
 <script setup lang="ts">
 import type { TreeItem } from '@nuxt/ui';
+import SampleTable from './SampleTable.vue';
 
 const items = ref<TreeItem[]>([
   {
