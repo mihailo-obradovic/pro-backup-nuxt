@@ -33,7 +33,7 @@
 </template>
 
 <script setup lang="ts">
-import type { Member } from '~/types';
+import type { Member } from '~/app/types';
 
 const { data: members } = await useFetch<Member[]>('/api/members', {
   default: () => []

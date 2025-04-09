@@ -33,7 +33,7 @@
 </template>
 
 <script setup lang="ts">
-import type { Period, Range, Stat } from '~/types';
+import type { Period, Range, Stat } from '~/app/types';
 
 const props = defineProps<{
   period: Period;

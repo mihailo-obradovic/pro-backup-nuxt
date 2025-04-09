@@ -42,7 +42,7 @@ import {
   VisCrosshair,
   VisTooltip
 } from '@unovis/vue';
-import type { Period, Range } from '~/types';
+import type { Period, Range } from '~/app/types';
 
 const cardRef = useTemplateRef<HTMLElement | null>('cardRef');
 

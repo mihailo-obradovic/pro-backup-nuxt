@@ -4,8 +4,6 @@ export default defineNuxtConfig({
 
   devtools: { enabled: true },
 
-  ssr: false,
-
   runtimeConfig: {
     app: {
       //
@@ -24,10 +22,12 @@ export default defineNuxtConfig({
     '@vueuse/nuxt'
   ],
 
-  css: ['@/assets/styles/main.css'],
+  css: ['@/app/assets/styles/main.css'],
 
-  imports: {
-    dirs: ['services']
+  routeRules: {
+    '/api/**': {
+      cors: true
+    }
   },
 
   hooks: {
@@ -44,14 +44,8 @@ export default defineNuxtConfig({
         name: 'Home',
         path: '/',
         alias: '/home',
-        file: '@/pages/Home.vue'
+        file: '@/app/pages/Home.vue'
       });
-    }
-  },
-
-  routeRules: {
-    '/api/**': {
-      cors: true
     }
   }
 });

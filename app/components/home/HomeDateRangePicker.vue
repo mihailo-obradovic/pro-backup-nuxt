@@ -64,7 +64,7 @@ import {
   CalendarDate,
   today
 } from '@internationalized/date';
-import type { Range } from '~/types';
+import type { Range } from '~/app/types';
 
 const df = new DateFormatter('en-US', {
   dateStyle: 'medium'

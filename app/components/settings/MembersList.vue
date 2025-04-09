@@ -39,7 +39,7 @@
 </template>
 
 <script setup lang="ts">
-import type { Member } from '~/types';
+import type { Member } from '~/app/types';
 
 defineProps<{
   members: Member[];

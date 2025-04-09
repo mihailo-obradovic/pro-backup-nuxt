@@ -52,7 +52,7 @@
 
 <script setup lang="ts">
 import { format, isToday } from 'date-fns';
-import type { Mail } from '~/types';
+import type { Mail } from '~/app/types';
 
 const props = defineProps<{
   mails: Mail[];
