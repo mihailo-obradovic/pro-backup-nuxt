@@ -1,6 +1,6 @@
 <template>
   <u-page>
-    <div class="flex items-center p-4 gap-6">
+    <div class="flex items-center py-4 gap-6">
       <div class="font-medium text-3xl">AirTable</div>
 
       <div class="flex gap-4">
@@ -30,16 +30,27 @@
       </u-button>
     </div>
 
-    <u-tabs
-      :items="tabs"
-      class="h-full w-full gap-4"
-      variant="link"
-      :ui="{ content: 'h-full' }"
-    >
-      <template #tasks>
-        <TasksTab />
-      </template>
-    </u-tabs>
+    <div class="flex items-center justify-between py-4">
+      <div class="flex gap-2">
+        <u-button
+          v-for="tab in tabs"
+          :key="tab.label"
+          :icon="tab.icon"
+          variant="ghost"
+          :label="tab.label"
+          color="neutral"
+          size="lg"
+        />
+      </div>
+
+      <div class="flex items-center gap-4">
+        <UInput class="max-w-sm min-w-[12ch]" placeholder="Filter emails..." />
+
+        <UButton color="neutral" icon="i-lucide-funnel" label="Filter" />
+      </div>
+    </div>
+
+    <TasksTab />
   </u-page>
 </template>
 
@@ -51,33 +62,27 @@ import TasksTab from '@/components/TasksTab.vue';
 const tabs = ref<TabsItem[]>([
   {
     label: 'Tasks',
-    icon: 'i-lucide-check-circle',
-    slot: 'tasks' as const
+    icon: 'i-lucide-check-circle'
   },
   {
     label: 'Projects',
-    icon: 'i-lucide-folder',
-    content: 'This is the projects content.'
+    icon: 'i-lucide-folder'
   },
   {
     label: 'Attachments',
-    icon: 'i-lucide-paperclip',
-    content: 'This is the attachments content.'
+    icon: 'i-lucide-paperclip'
   },
   {
     label: 'Comments',
-    icon: 'i-lucide-message-square',
-    content: 'This is the comments content.'
+    icon: 'i-lucide-message-square'
   },
   {
     label: 'Custom Fields',
-    icon: 'i-lucide-file-text',
-    content: 'This is the custom fields content.'
+    icon: 'i-lucide-file-text'
   },
   {
     label: 'Goals',
-    icon: 'i-lucide-target',
-    content: 'This is the goals content.'
+    icon: 'i-lucide-target'
   }
 ]);
 </script>
