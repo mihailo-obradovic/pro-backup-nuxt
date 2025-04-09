@@ -1,44 +1,11 @@
 <template>
   <div class="flex-1 divide-y divide-(--ui-border-accented) w-full">
-    <div class="flex items-center gap-2 px-4 py-3.5 overflow-x-auto">
-      <UDropdownMenu
-        :items="
-          table?.tableApi
-            ?.getAllColumns()
-            .filter((column) => column.getCanHide())
-            .map((column) => ({
-              label: upperFirst(column.id),
-              type: 'checkbox' as const,
-              checked: column.getIsVisible(),
-              onUpdateChecked(checked: boolean) {
-                table?.tableApi
-                  ?.getColumn(column.id)
-                  ?.toggleVisibility(!!checked);
-              },
-              onSelect(e?: Event) {
-                e?.preventDefault();
-              }
-            }))
-        "
-        :content="{ align: 'end' }"
-      >
-        <UButton
-          label="Columns"
-          color="neutral"
-          variant="outline"
-          trailing-icon="i-lucide-chevron-down"
-          class="ml-auto"
-          aria-label="Columns select dropdown"
-        />
-      </UDropdownMenu>
-    </div>
-
     <UTable
       ref="table"
       :data="data"
       :columns="columns"
       sticky
-      class="h-[560px]"
+      class="h-[630px]"
     >
       <template #expanded="{ row }">
         <pre>{{ row.original }}</pre>
@@ -55,7 +22,6 @@
 
 <script setup lang="ts">
 import { h, resolveComponent } from 'vue';
-import { upperFirst } from 'scule';
 import type { TableColumn } from '@nuxt/ui';
 
 const UButton = resolveComponent('UButton');
@@ -370,8 +336,4 @@ const columns: TableColumn<Payment>[] = [
 ];
 
 const table = useTemplateRef('table');
-
-function randomize() {
-  data.value = [...data.value].sort(() => Math.random() - 0.5);
-}
 </script>
