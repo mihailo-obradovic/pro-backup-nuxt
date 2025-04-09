@@ -1,5 +1,5 @@
 <template>
-  <u-page>
+  <div>
     <div class="flex items-center py-4 gap-6">
       <div class="font-medium text-3xl">AirTable</div>
 
@@ -54,7 +54,7 @@
     </div>
 
     <TasksTab />
-  </u-page>
+  </div>
 </template>
 
 <script setup lang="ts">
