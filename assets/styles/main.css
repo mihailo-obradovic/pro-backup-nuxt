@@ -1,5 +1,5 @@
-@import "tailwindcss";
-@import "@nuxt/ui-pro";
+@import 'tailwindcss';
+@import '@nuxt/ui-pro';
 
 html,
 body,
@@ -11,26 +11,23 @@ body,
 }
 
 body {
-    font-family: sans-serif;
+    font-family: 'Outfit', sans-serif;
 }
 
-::selection {
-    color: white;
-    background-color: red;
-}
+@theme static {
+    --font-sans: 'Outfit', sans-serif;
 
-.user-select-none {
-    user-select: none;
-}
+    --breakpoint-3xl: 1920px;
 
-.text-transform-none {
-    text-transform: none;
-}
-
-.z-index-top {
-    z-index: 1000;
-}
-
-.br-2 {
-    border-radius: 8px;
+    --color-green-50: #effdf5;
+    --color-green-100: #d9fbe8;
+    --color-green-200: #b3f5d1;
+    --color-green-300: #75edae;
+    --color-green-400: #00dc82;
+    --color-green-500: #00c16a;
+    --color-green-600: #00a155;
+    --color-green-700: #007f45;
+    --color-green-800: #016538;
+    --color-green-900: #0a5331;
+    --color-green-950: #052e16;
 }
