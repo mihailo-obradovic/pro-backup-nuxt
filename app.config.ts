@@ -37,6 +37,11 @@ export default defineAppConfig({
       minus: 'i-lucide-minus',
       plus: 'i-lucide-plus',
       search: 'i-lucide-search'
+    },
+
+    colors: {
+      white: 'white',
+      foreground: '#121637'
     }
   }
 });

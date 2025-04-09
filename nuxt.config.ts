@@ -20,6 +20,21 @@ export default defineNuxtConfig({
 
   css: ['@/assets/styles/main.css'],
 
+  ui: {
+    theme: {
+      colors: [
+        'primary',
+        'secondary',
+        'white',
+        'info',
+        'success',
+        'warning',
+        'error',
+        'foreground'
+      ]
+    }
+  },
+
   components: {
     dirs: ['@/components/shared']
   },

@@ -1,6 +1,6 @@
 <template>
   <div class="h-full w-full flex flex-col">
-    <u-dashboard-navbar class="bg-[#121637]">
+    <u-dashboard-navbar class="bg-foreground">
       <template #leading>
         <u-button variant="soft" color="neutral" icon="i-lucide-cloud">
           Home
@@ -30,7 +30,7 @@
         <ClientOnly v-if="!colorMode?.forced">
           <UButton
             :icon="isDark ? 'i-lucide-moon' : 'i-lucide-sun'"
-            variant="ghost"
+            color="white"
             @click="isDark = !isDark"
           />
 
@@ -39,10 +39,9 @@
           </template>
         </ClientOnly>
 
-        <!-- settings and user buttons -->
-        <u-button variant="ghost" icon="i-lucide-settings" />
+        <u-button color="white" icon="i-lucide-settings" />
 
-        <u-button variant="ghost" icon="i-lucide-user" />
+        <u-button color="white" icon="i-lucide-user" />
       </template>
     </u-dashboard-navbar>
 
@@ -53,17 +52,6 @@
 </template>
 
 <script setup lang="ts">
-const items = [
-  {
-    label: 'All',
-    value: 'all'
-  },
-  {
-    label: 'Unread',
-    value: 'unread'
-  }
-];
-
 const colorMode = useColorMode();
 
 const isDark = computed({

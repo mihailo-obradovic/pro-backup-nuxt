@@ -30,4 +30,10 @@ body {
     --color-green-800: #016538;
     --color-green-900: #0a5331;
     --color-green-950: #052e16;
+
+    --color-foreground: #121637;
+}
+
+html.dark {
+    --color-foreground: white; /* A lighter shade for dark mode */
 }
