@@ -2,9 +2,13 @@
   <div class="flex-1 divide-y divide-(--ui-border-accented) w-full">
     <UTable
       ref="table"
+      v-model:pagination="pagination"
       :data="data"
       :columns="columns"
       sticky
+      :pagination-options="{
+        getPaginationRowModel: getPaginationRowModel()
+      }"
       class="h-[630px]"
     >
       <template #expanded="{ row }">
@@ -12,10 +16,21 @@
       </template>
     </UTable>
 
-    <div class="px-4 py-3.5 text-sm text-(--ui-text-muted)">
+    <div
+      class="px-4 py-3.5 text-sm text-(--ui-text-muted) flex justify-between items-center"
+    >
       {{ table?.tableApi?.getFilteredSelectedRowModel().rows.length || 0 }} of
       {{ table?.tableApi?.getFilteredRowModel().rows.length || 0 }} row(s)
       selected.
+
+      <UPagination
+        :default-page="
+          (table?.tableApi?.getState().pagination.pageIndex || 0) + 1
+        "
+        :items-per-page="table?.tableApi?.getState().pagination.pageSize"
+        :total="table?.tableApi?.getFilteredRowModel().rows.length"
+        @update:page="(p) => table?.tableApi?.setPageIndex(p - 1)"
+      />
     </div>
   </div>
 </template>
@@ -23,6 +38,7 @@
 <script setup lang="ts">
 import { h, resolveComponent } from 'vue';
 import type { TableColumn } from '@nuxt/ui';
+import { getPaginationRowModel } from '@tanstack/vue-table';
 
 const UButton = resolveComponent('UButton');
 const UCheckbox = resolveComponent('UCheckbox');
@@ -336,4 +352,9 @@ const columns: TableColumn<Payment>[] = [
 ];
 
 const table = useTemplateRef('table');
+
+const pagination = ref({
+  pageIndex: 0,
+  pageSize: 5
+});
 </script>
