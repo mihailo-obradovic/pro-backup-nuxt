@@ -1,14 +1,46 @@
 <template>
-  <u-tabs
-    :items="tabs"
-    class="h-full w-full gap-4"
-    variant="link"
-    :ui="{ content: 'h-full' }"
-  >
-    <template #tasks>
-      <TasksTab />
-    </template>
-  </u-tabs>
+  <u-page>
+    <div class="flex items-center p-4 gap-6">
+      <div class="font-medium text-3xl">AirTable</div>
+
+      <div class="flex gap-4">
+        <div class="text-sm flex items-center gap-1">
+          <UIcon name="logos:google-drive" />
+          Google Drive synced
+        </div>
+        <div class="text-sm flex items-center gap-1">
+          <UIcon name="i-lucide-shield" />
+          Last Backup: 2025-05-25
+        </div>
+        <div class="text-sm flex items-center gap-1">
+          <UIcon name="i-lucide-info" />
+          Warnings: 0
+        </div>
+      </div>
+
+      <div class="flex-1" />
+
+      <u-button
+        icon="i-lucide-chart-no-axes-column"
+        variant="outline"
+        color="neutral"
+        size="lg"
+      >
+        Reports
+      </u-button>
+    </div>
+
+    <u-tabs
+      :items="tabs"
+      class="h-full w-full gap-4"
+      variant="link"
+      :ui="{ content: 'h-full' }"
+    >
+      <template #tasks>
+        <TasksTab />
+      </template>
+    </u-tabs>
+  </u-page>
 </template>
 
 <script setup lang="ts">
