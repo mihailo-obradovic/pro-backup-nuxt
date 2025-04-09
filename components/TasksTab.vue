@@ -1,8 +1,12 @@
 <template>
-  <div class="flex p-4 gap-4 h-full">
-    <UTree :items="items" />
+  <div class="flex gap-4 h-full">
+    <u-card>
+      <UTree :items="items" />
+    </u-card>
 
-    <SampleTable />
+    <u-card class="w-full">
+      <SampleTable />
+    </u-card>
   </div>
 </template>
 

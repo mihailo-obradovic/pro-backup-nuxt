@@ -1,7 +1,7 @@
 <template>
   <u-tabs
     :items="tabs"
-    class="h-full w-full"
+    class="h-full w-full gap-4"
     variant="link"
     :ui="{ content: 'h-full' }"
   >
