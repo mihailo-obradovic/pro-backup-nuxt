@@ -31,15 +31,18 @@
     </div>
 
     <div class="flex items-center justify-between py-4">
-      <div class="flex gap-2">
+      <div class="flex gap-1">
         <u-button
           v-for="tab in tabs"
           :key="tab.label"
           :icon="tab.icon"
-          variant="ghost"
+          variant="link"
           :label="tab.label"
           color="neutral"
           size="lg"
+          :active="selectedTab === tab.label"
+          active-color="primary"
+          @click="selectedTab = tab.label"
         />
       </div>
 
@@ -58,6 +61,8 @@
 import type { TabsItem } from '@nuxt/ui';
 
 import TasksTab from '@/components/TasksTab.vue';
+
+const selectedTab = ref('Tasks'); // Default selected tab
 
 const tabs = ref<TabsItem[]>([
   {
