@@ -1,27 +1,35 @@
 <template>
   <div class="h-full w-full flex flex-col">
-    <u-dashboard-navbar title="ProBackup">
+    <u-dashboard-navbar class="bg-[#121637]">
       <template #leading>
-        <u-dashboard-sidebar-collapse />
+        <u-button variant="soft" color="neutral" icon="i-lucide-cloud">
+          Home
+        </u-button>
+
+        <u-button
+          variant="soft"
+          color="error"
+          class="bg-white"
+          icon="i-lucide-shapes"
+        />
+
+        <u-button
+          variant="soft"
+          class="bg-[#2D314E]"
+          icon="i-lucide-monitor-play"
+        />
+
+        <u-button variant="soft" class="bg-[#2D314E]" icon="i-lucide-shapes" />
       </template>
 
       <template #trailing>
-        <u-badge label="4" variant="subtle" />
+        <u-button icon="i-lucide-plus" />
       </template>
 
       <template #right>
-        <u-tabs
-          :items="items"
-          default-value="all"
-          size="sm"
-          class="w-40"
-          :content="false"
-        />
-
         <ClientOnly v-if="!colorMode?.forced">
           <UButton
             :icon="isDark ? 'i-lucide-moon' : 'i-lucide-sun'"
-            color="neutral"
             variant="ghost"
             @click="isDark = !isDark"
           />
@@ -30,6 +38,11 @@
             <div class="size-8" />
           </template>
         </ClientOnly>
+
+        <!-- settings and user buttons -->
+        <u-button variant="ghost" icon="i-lucide-settings" />
+
+        <u-button variant="ghost" icon="i-lucide-user" />
       </template>
     </u-dashboard-navbar>
 
